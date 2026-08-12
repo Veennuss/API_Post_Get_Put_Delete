@@ -4,7 +4,7 @@ const User = require('../models/userModel')
 // Criar usuário
 exports.createUser = async (req, res) => {
     try {
-        const user = await User.create(req.body);
+        const user = await User.bulkCreate(req.body);
         res.status(201).json(user);
     } catch (err) {
         res.status(400).json({ error: err.message });
@@ -22,7 +22,7 @@ exports.getUsers = async (req, res) => {
 exports.getUserById = async (req, res) => {
     const user = await User.findByPk(req.params.id);
 
-    if (luser) return res.status(404).json({ error: "Usuário não encontrado" });
+    if (!user) return res.status(404).json({ error: "Usuário não encontrado" });
     res.json(user);
 };
 
