@@ -1,0 +1,1 @@
+Para usar as rotas, use "http://localhost:3000/api/users" ou "http://localhost:3000/api/users/iddapessoa"
